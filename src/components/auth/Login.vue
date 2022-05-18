@@ -1,29 +1,19 @@
 <template>
     <div class="container">
-        <div class="wrapper fadeInDown">
+        <div class="wrapper fadeInDown mb-5">
             <div id="formContent">
-            <!-- Tabs Titles -->
-            <h2 class="active mt-4"> Sign In </h2>
-            <h2 class="inactive underlineHover mt-3">Sign Up </h2>
-
-            <!-- Icon -->
-            <div class="fadeIn first">
-            </div>
-
             <!-- Login Form -->
             <form>
                 <div class="login-title m-2">Email</div>
             <input type="email" id="login" class="fadeIn second" name="login" placeholder="Email">
             <div class="password-title m-2">Password</div>
             <input type="password" id="password" class="fadeIn third" name="login" placeholder="password">
-            <input type="submit" class="fadeIn fourth" value="Log In">
-            </form>
-
-            <!-- Remind Passowrd -->
-            <div id="formFooter">
-            <a class="underlineHover" href="#">Forgot Password?</a>
+            <div class="fadeIn fourth">
+                <button type="button" class="btn btn-primary btn-lg pr-10 pl-10 w-50 my-3">Login</button>
             </div>
-
+            <div class="fadeIn fourth mb-4"> 
+                <button @click="onForgotClick" type="button" class="btn btn-link">Forgot Password</button></div>
+            </form>
             </div>
             </div>
     </div>   
@@ -32,14 +22,23 @@
 <script>
 export default {
    name: 'login',
+   props : ['signUp', 'signIn'],
+   data() {
+       return {
+           signUp : false,
+           signIn : true,
+       }
+   },
    methods : {
        onSignUp() {
-
+           this.signUp = true;
+           this.signIn = false;
+           console.log(this.signUp)
        }
-   }
+   }    
 }
 </script>
-<style>
+<style scoped>
     @import url('https://fonts.googleapis.com/css?family=Poppins');
 
 /* BASIC */
@@ -93,22 +92,9 @@ h2 {
   max-width: 450px;
   position: relative;
   padding: 0px;
-  -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
-  box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
   text-align: center;
-  margin-top: 50px;
+  /* margin-top: 50px; */
 }
-
-#formFooter {
-  background-color: #f6f6f6;
-  border-top: 1px solid #dce8f1;
-  padding: 25px;
-  text-align: center;
-  -webkit-border-radius: 0 0 10px 10px;
-  border-radius: 0 0 10px 10px;
-}
-
-
 
 /* TABS */
 
