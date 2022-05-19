@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <div class="wrapper fadeInDown mb-5">
+        <div class="wrapper fadeInDown mb-3">
             <div id="formContent">
             <!-- Tabs Titles -->
             <!-- Icon -->
@@ -10,16 +10,16 @@
             <!-- Login Form -->
             <form>
                 <div class="login-title m-2">First Name</div>
-                    <input type="text" id="login" class="fadeIn second" name="login" placeholder="Your First Name">
+                    <input type="text" v-model="signupCred.firstName" class="fadeIn second"  placeholder="Your First Name">
                 <div class="login-title m-2">Last Name</div>
-                    <input type="text" id="login" class="fadeIn second" name="login" placeholder="Your Last Name">
+                    <input type="text" v-model="signupCred.lastName" class="fadeIn second"  placeholder="Your Last Name">
                 <div class="login-title m-2">Email</div>
-                    <input type="email" id="login" class="fadeIn second" name="login" placeholder="Email">
+                    <input type="email" v-model="signupCred.email"  class="fadeIn second"  placeholder="Email">
                 <div class="password-title m-2">Password</div>
-                    <input type="password" id="password" class="fadeIn third mb-3" name="login" placeholder="password">    
+                    <input type="password" id="password" v-model="signupCred.password" class="fadeIn third mb-3"  placeholder="password">    
                 <div class="fadeIn fourth">
-                <button type="button" class="btn btn-primary btn-lg pr-10 pl-10 w-50 my-3">Sign Up</button>
-            </div>
+                    <button type="button" @click="onSignUpClick" class="btn btn-primary btn-lg pr-10 pl-10 w-50 my-3">Sign Up</button>
+                </div>
             </form>
             </div>
             </div>
@@ -27,8 +27,24 @@
 </template>
 
 <script>
+import Api from '@/api'
 export default {
    name: 'signup',
+   data() {
+       return {
+           signupCred : {
+            firstName:"",
+            lastName:"",            
+            email: "",
+            password: ""
+           },
+       }
+   },
+   methods : {
+     onSignUpClick() {
+       return Api.addUser(this.signupCred).then(res => window.alert(res.data.message));
+     }
+   }
 }
 </script>
 <style scoped>
@@ -79,7 +95,7 @@ h2 {
 #formContent {
   -webkit-border-radius: 10px 10px 10px 10px;
   border-radius: 10px 10px 10px 10px;
-  background: #fff;
+  background: rgb(222, 229, 234);
   padding: 30px;
   width: 90%;
   max-width: 450px;

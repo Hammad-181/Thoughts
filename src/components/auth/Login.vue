@@ -5,36 +5,34 @@
             <!-- Login Form -->
             <form>
                 <div class="login-title m-2">Email</div>
-            <input type="email" id="login" class="fadeIn second" name="login" placeholder="Email">
-            <div class="password-title m-2">Password</div>
-            <input type="password" id="password" class="fadeIn third" name="login" placeholder="password">
-            <div class="fadeIn fourth">
-                <button type="button" class="btn btn-primary btn-lg pr-10 pl-10 w-50 my-3">Login</button>
-            </div>
-            <div class="fadeIn fourth mb-4"> 
-                <button @click="onForgotClick" type="button" class="btn btn-link">Forgot Password</button></div>
-            </form>
+                    <input type="email" v-model="loginCred.email" class="fadeIn second"  placeholder="Email">
+                <div class="password-title m-2">Password</div>
+                    <input type="password" v-model="loginCred.password" class="fadeIn third" placeholder="password">
+                <div class="fadeIn fourth">
+                    <button type="button" class="btn btn-primary btn-lg pr-10 pl-10 w-50 my-3">Login</button>
+                </div>
+                <div class="fadeIn fourth mb-4"> 
+                    <button @click="onForgotClick" type="button" class="btn btn-link">Forgot Password</button></div>
+                </form>
             </div>
             </div>
     </div>   
 </template>
 
 <script>
+import Api from '@/api'
 export default {
    name: 'login',
-   props : ['signUp', 'signIn'],
    data() {
        return {
-           signUp : false,
-           signIn : true,
+           loginCred : {
+            email: "",
+            password: ""
+           },
        }
    },
    methods : {
-       onSignUp() {
-           this.signUp = true;
-           this.signIn = false;
-           console.log(this.signUp)
-       }
+    
    }    
 }
 </script>
@@ -86,7 +84,7 @@ h2 {
 #formContent {
   -webkit-border-radius: 10px 10px 10px 10px;
   border-radius: 10px 10px 10px 10px;
-  background: #fff;
+  background: rgb(222, 229, 234);
   padding: 30px;
   width: 90%;
   max-width: 450px;

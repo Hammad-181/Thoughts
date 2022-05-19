@@ -3,12 +3,17 @@
   <div class="home">
     <div class="auth">
       <div class="anchor">
-        <a @click="onAnchorClick('signin')" href="#">Sign In</a>
+        <a @click="onAnchorClick('signin')" href="#">Sign In |</a>
         <a @click="onAnchorClick('signup')" href="#">Sign Up</a>
       </div>
       <Login v-if="signInActive"/>
       <SignUp v-else/>
     </div>
+     <div class="users">
+        <button @click="onUserClick" class="btn btn-dark">
+          Users
+        </button>
+      </div>
   </div>
 </template>
 
@@ -50,6 +55,9 @@ export default {
       else {
         this.signInActive = false
       }
+    },
+    onUserClick() {
+      this.$router.push('/users')
     }
   }
 
@@ -60,7 +68,8 @@ export default {
 .home {
   display: flex;
   justify-content: center;
-  margin-top: 8rem;
+  margin-top: 6rem;
+  margin-bottom: 2rem;
 }
 .anchor{
   display: flex;

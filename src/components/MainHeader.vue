@@ -15,11 +15,12 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
   .navbar{
-    background: #f6f6f6;
+    background: rgb(222, 229, 234);
     height: 100px;
   }
   .navbar-text{
     font-size: 50px;
+    font-family: "Lucida Console", "Courier New", monospace;
   }
   
 </style>
