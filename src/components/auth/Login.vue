@@ -9,7 +9,7 @@
                 <div class="password-title m-2">Password</div>
                     <input type="password" v-model="loginCred.password" class="fadeIn third" placeholder="password">
                 <div class="fadeIn fourth">
-                    <button type="button" class="btn btn-primary btn-lg pr-10 pl-10 w-50 my-3">Login</button>
+                    <button @click="onLoginClick" type="button" class="btn btn-primary btn-lg pr-10 pl-10 w-50 my-3">Login</button>
                 </div>
                 <div class="fadeIn fourth mb-4"> 
                     <button @click="onForgotClick" type="button" class="btn btn-link">Forgot Password</button></div>
@@ -20,19 +20,22 @@
 </template>
 
 <script>
-import Api from '@/api'
+import Api from '@/api';
+
 export default {
    name: 'login',
    data() {
        return {
-           loginCred : {
+          loginCred : {
             email: "",
             password: ""
            },
        }
    },
    methods : {
-    
+     onLoginClick() {
+       Api.loginUser(this.loginCred).then(res => window.alert(res.data.message));
+     }
    }    
 }
 </script>
