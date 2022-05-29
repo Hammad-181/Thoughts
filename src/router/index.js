@@ -9,10 +9,10 @@ const routes = [
     component: () => import('@/views/HomeView.vue'),
   },
   {
-    path: "/users",
-    name: "userInfo",
-    component: () => import('@/components/UserInfo.vue'),
-  },
+      path: "/home",
+      name: "navbar",
+      component: () => import('@/components/NavBar.vue'), 
+  }
 ]
 
 const router = createRouter({

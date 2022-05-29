@@ -9,11 +9,6 @@
       <Login v-if="signInActive"/>
       <SignUp v-else/>
     </div>
-     <div class="users">
-        <button @click="onUserClick" class="btn btn-dark">
-          Users
-        </button>
-      </div>
   </div>
 </template>
 
@@ -28,7 +23,8 @@ export default {
   name: 'HomeView',
   data() {
     return {
-      signInActive: true
+      signInActive: true,
+      signUpActive:false
     }
   },
 

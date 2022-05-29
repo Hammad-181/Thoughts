@@ -42,7 +42,10 @@ export default {
    },
    methods : {
      onSignUpClick() {
-       return Api.addUser(this.signupCred).then(res => window.alert(res.data.message));
+        Api.addUser(this.signupCred).then(res => window.alert(res.data.message)).catch(err => {
+          let message = err.response.data.response.details[0].message;
+          window.alert(message)
+        });
      }
    }
 }

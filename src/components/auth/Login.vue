@@ -15,12 +15,15 @@
                     <button @click="onForgotClick" type="button" class="btn btn-link">Forgot Password</button></div>
                 </form>
             </div>
-            </div>
+        </div>
+        <teleport to="#root">
+          <notification :message="message"/>
+          </teleport>
     </div>   
 </template>
 
 <script>
-import Api from '@/api';
+import { mapActions } from 'vuex'
 
 export default {
    name: 'login',
@@ -30,11 +33,23 @@ export default {
             email: "",
             password: ""
            },
+           message : ''
        }
    },
+   computed: {
+   },
    methods : {
+     ...mapActions(['getProfile']),
      onLoginClick() {
-       Api.loginUser(this.loginCred).then(res => window.alert(res.data.message));
+      this.getProfile(this.loginCred).then(res => {
+        if(res) {
+          window.alert(res.message)
+          this.$router.push('/home')
+        }
+        
+      })
+      
+
      }
    }    
 }
